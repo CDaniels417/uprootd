@@ -1,0 +1,20 @@
+<div class="container pt-5">
+  <div class="row">
+    <div class="col text-center">
+      <h1 class="display-2">{{user.name}}</h1>
+      <h2 class="">{{user.location}}</h2>
+      {{!-- <h3 class="">{{user.description}}</h3> --}}
+    </div>
+  </div>
+  
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="display-3">Reviews</h2>
+      <ul>
+        {{#each user.reviews}}
+          <li>Kava {{kavaId}}: {{rating}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</div>
