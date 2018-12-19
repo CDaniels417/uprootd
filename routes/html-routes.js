@@ -52,13 +52,13 @@ module.exports = function(app) {
         username: req.params.username
       },
       include: [db.reviews]
-    }).then(function(user) {
+    }).then(function(dbUser) {
 
       var obj = {
         user:{
-          name: user.name,
-          location: user.location,
-          reviews: user.reviews
+          name: dbUser.name,
+          location: dbUser.location,
+          reviews: dbUser.reviews
         }
       };
 
@@ -66,8 +66,8 @@ module.exports = function(app) {
     });
   });
 
-  // app.get("/cms", function(req, res) {
-  //   res.sendFile(path.join(__dirname, "../public/cms.html"));
-  // });
+  app.get('/login', function(req, res){
+    res.render('login',{});
+  });
 
 };

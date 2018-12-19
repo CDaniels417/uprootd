@@ -5,7 +5,6 @@
 // Dependencies
 // =============================================================
 
-// Requiring our Todo model
 var db = require("../models");
 
 // Routes
@@ -34,9 +33,6 @@ module.exports = function(app) {
 
   // GET route for getting a user and all related review info
   app.get("/api/user/:id", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Post
     db.users.findOne({
       where: {
         id: req.params.id
@@ -49,9 +45,6 @@ module.exports = function(app) {
 
   // GET route for getting a user and all related review info
   app.get("/api/kava/:id", function(req, res) {
-    // Here we add an "include" property to our options in our findOne query
-    // We set the value to an array of the models we want to include in a left outer join
-    // In this case, just db.Post
     db.kavas.findOne({
       where: {
         id: req.params.id
