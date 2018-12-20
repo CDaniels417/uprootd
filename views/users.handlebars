@@ -1,23 +1,36 @@
-<div class="container pt-5">
-  
-  {{> header}}
-
-  <div class="row">
-    <div class="col text-center">
-      <h1 class="display-3">{{user.name}}</h1>
-      <h2 class="">{{user.location}}</h2>
-      {{!-- <h3 class="">{{user.description}}</h3> --}}
+<div class="row">
+  <div class="col s12">
+    <div class="card small brown lighten-3">
+      <div class="card-image"><img src="https://lorempixel.com/500/500" alt=""></div>
+      <div class="card-stacked">
+        <div class="card-content">
+          <span class="card-title">{{user.name}}</span>
+          <p>{{user.location}}</p>
+        </div>
+      </div>
     </div>
   </div>
-  
-  <div class="row">
-    <div class="col text-center">
-      <h2 class="display-4">Reviews</h2>
-      <ul>
+</div>
+
+<div class="row">
+  <div class="col s12">
+    <h3 class="header">Reviews</h3>
+    <table class="highlight">
+      <thead>
+        <tr>
+          <th>Kava</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+
+      <tbody>
         {{#each user.reviews}}
-          <li>Kava {{kavaId}}: {{rating}}</li>
+          <tr>
+            <td>{{kavaId}}</td>
+            <td>{{rating}}</td>
+          </tr>
         {{/each}}
-      </ul>
-    </div>
+      </tbody>
+    </table>
   </div>
 </div>

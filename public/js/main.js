@@ -1,4 +1,8 @@
 $(document).ready(function() {
+  
+  // init materialize css js
+  M.AutoInit();
+
 
   // populate kava object
   var kavaList = [];
@@ -17,8 +21,44 @@ $(document).ready(function() {
     }
   });
 
+  $(document).on('click','.sign-up-link',function(){
+    $('.content-login').addClass('hide');
+    $('.content-register').removeClass('hide');
+    $('.login-register-toggle').html('Already registered? <a class="login-link">Login Here!</a>')
+  });
 
-  
+  $(document).on('click','.login-link',function(){
+    $('.content-register').addClass('hide');
+    $('.content-login').removeClass('hide');
+    $('.login-register-toggle').html('Not registered? <a class="sign-up-link">Sign up today!</a>')
+  });
+
+  $('.trending-kavas').on('click','a',function(e){
+    $('#kavaModal .modal-content').empty();
+    var id = $(this).data('kava');
+
+    $.get('/api/kava/'+id, function(data) {
+
+      var avg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+      var ratingArr = [];
+
+      for (var i = 0; i < data.reviews.length; i++) {
+        ratingArr.push(data.reviews[i].rating);
+      };
+
+      var html = '<div class="card small brown lighten-3"><div class="card-image"><img src="https://lorempixel.com/500/500" alt=""></div><div class="card-stacked"><div class="card-content"><span class="card-title">'+data.name+'</span><p>'+data.country+'</p><p>'+data.description+'</p><p>Average Rating: '+avg(ratingArr)+'</p></div></div></div>';
+      
+      $(html).appendTo('#kavaModal .modal-content');
+
+      $('#kavaModal').modal('open');
+
+
+    });
+
+  });
+
+
+
 
   // //auto complete code
   // function autocomplete(inp, arr) {

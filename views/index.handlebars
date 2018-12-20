@@ -1,15 +1,76 @@
-<div class="container pt-5">
-
-{{> header}}
-
 <div class="row">
-  <div class="col">
-    <p>Welcome to UpRootd! Search below for your favorite kava root, and see its rating. Sign up and login to add your own rating. Happy drinking 😄 BULA!</p>
+  <div class="col s12">
+    <h3 class="header">Trending Kavas</h3>
+    <div class="trending-kavas">
+
+      {{#each kavas}}
+        <div class="card horizontal brown lighten-3 hoverable">
+          <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
+          <div class="card-stacked">
+            <div class="card-content">
+              <span class="card-title">{{name}}</span>
+              <p>{{country}}</p>
+            </div>
+            <div class="card-action">
+              <a data-kava="{{id}}" class="">More Info</a>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+      
+
+      {{!-- <div class="card horizontal brown lighten-3 hoverable">
+        <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <span class="card-title">Borogu</span>
+            <p>Vanuatu</p>
+          </div>
+          <div class="card-action">
+            <a data-kava="1" class="">More Info</a>
+          </div>
+        </div>
+      </div>
+      <div class="card horizontal brown lighten-3 hoverable">
+        <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <span class="card-title">Pouni Ono</span>
+            <p>Tonga</p>
+          </div>
+          <div class="card-action">
+            <a data-kava="1" class="">More Info</a>
+          </div>
+        </div>
+      </div>
+      <div class="card horizontal brown lighten-3 hoverable">
+        <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <span class="card-title">Vula Waka</span>
+            <p>Fiji</p>
+          </div>
+          <div class="card-action">
+            <a data-kava="1" class="">More Info</a>
+          </div>
+        </div>
+      </div> --}}
+    </div>
   </div>
 </div>
 
-<div class="row mt-5  ">
-  <div class="col text-center">
+
+
+<div id="kavaModal" class="modal">
+  <div class="modal-content">
+  </div>    
+  <div class="modal-footer">
+    <button class="btn modal-close red">Close<i class="material-icons right">close</i></button>
+  </div>
+</div>
+
+{{!-- <div class="row">
+  <div class="col s12 center-align">
     <!--Make sure the form has the autocomplete function switched off:-->
     <form autocomplete="off" action="/kava">
       <div class="autocomplete" style="width:300px;">
@@ -19,4 +80,4 @@
       <input type="submit">
     </form>
   </div>
-</div>
+</div> --}}

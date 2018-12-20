@@ -15,7 +15,13 @@ module.exports = function(app) {
 
   // index route
   app.get("/", function(req, res) {
-    res.render('index',{});
+    db.kavas.findAll({}).then(function(dbKava){
+      var obj = {
+        kavas: dbKava,
+        isMainPage: true
+      };
+      res.render('index',obj);
+    });
   });
 
   // kava route

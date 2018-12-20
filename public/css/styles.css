@@ -1,3 +1,40 @@
+body{
+  font-family: 'Dosis', cursive !important; 
+}
+h1,h2,h3,h4,h5,h6, [class*=title]{
+  /* font-family: 'Special Elite', cursive; */
+  font-family: 'Averia Libre', cursive;
+}
+
+.container{
+  margin: 1em auto;
+  padding: 0 0 1em;
+  border-radius: .3em;
+}
+.page-header{
+  padding-top: 1em;
+  position: relative;
+}
+
+.card .card-content{
+  padding: 12px 24px;
+}
+
+.card .card-action{
+  padding: 8px 24px;
+}
+
+.modal-trigger, .login-register-toggle a{
+  cursor: pointer;
+}
+
+
+
+
+
+
+
+/* autocomplete */
 button.submit {
   float: right;
 }
