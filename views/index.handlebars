@@ -1,60 +1,49 @@
 <div class="row">
   <div class="col s12">
-    <h3 class="header">Trending Kavas</h3>
-    <div class="trending-kavas">
+    <div class="trending-kavas-wrap">
+      <h3 class="header">Trending Kavas</h3>
+      <div class="trending-kavas">
 
-      {{#each kavas}}
-        <div class="card horizontal brown lighten-3 hoverable">
-          <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
-          <div class="card-stacked">
-            <div class="card-content">
-              <span class="card-title">{{name}}</span>
-              <p>{{country}}</p>
+        {{#each kavas}}
+          {{#if isTrending}}
+            <div class="card horizontal brown lighten-3 hoverable">
+              <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <span class="card-title">{{name}}</span>
+                  <p>{{country}}</p>
+                </div>
+                <div class="card-action">
+                  <a data-kava="{{id}}" class="black-text">More Info</a>
+                </div>
+              </div>
             </div>
-            <div class="card-action">
-              <a data-kava="{{id}}" class="">More Info</a>
-            </div>
-          </div>
-        </div>
-      {{/each}}
-      
+          {{/if}}
+        {{/each}}
 
-      {{!-- <div class="card horizontal brown lighten-3 hoverable">
-        <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <span class="card-title">Borogu</span>
-            <p>Vanuatu</p>
-          </div>
-          <div class="card-action">
-            <a data-kava="1" class="">More Info</a>
-          </div>
-        </div>
+        <a class="view-all-kavas btn orange accent-2 right">View All Kava <i class="material-icons right">chevron_right</i></a>
       </div>
-      <div class="card horizontal brown lighten-3 hoverable">
-        <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <span class="card-title">Pouni Ono</span>
-            <p>Tonga</p>
+    </div>
+    <div class="all-kavas-wrap hide">
+      <h3 class="header">All Kavas</h3>
+      <div class="all-kavas">
+
+        {{#each kavas}}
+          <div class="card horizontal brown lighten-3 hoverable">
+            <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
+            <div class="card-stacked">
+              <div class="card-content">
+                <span class="card-title">{{name}}</span>
+                <p>{{country}}</p>
+              </div>
+              <div class="card-action">
+                <a data-kava="{{id}}" class="black-text">More Info</a>
+              </div>
+            </div>
           </div>
-          <div class="card-action">
-            <a data-kava="1" class="">More Info</a>
-          </div>
-        </div>
+        {{/each}}
       </div>
-      <div class="card horizontal brown lighten-3 hoverable">
-        <div class="card-image"><img src="https://lorempixel.com/120/120" alt=""></div>
-        <div class="card-stacked">
-          <div class="card-content">
-            <span class="card-title">Vula Waka</span>
-            <p>Fiji</p>
-          </div>
-          <div class="card-action">
-            <a data-kava="1" class="">More Info</a>
-          </div>
-        </div>
-      </div> --}}
+      <a class="view-trending-kavas btn orange accent-2 right">View Trending Kava <i class="material-icons right">chevron_right</i></a>
     </div>
   </div>
 </div>

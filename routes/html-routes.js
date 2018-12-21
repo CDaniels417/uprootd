@@ -15,11 +15,36 @@ module.exports = function(app) {
 
   // index route
   app.get("/", function(req, res) {
-    db.kavas.findAll({}).then(function(dbKava){
+    db.kavas.findAll({
+      include: [{
+        model: db.reviews,
+        nested: true
+      }]
+    }).then(function(dbKava){
+
+      var avg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+      var ratingArr = [];
+
+
+      for (var i = 0; i < dbKava.length; i++) {
+        var a = [];
+        dbKava[i].reviews.forEach(function(obj){
+          a.push(obj.rating);
+        });
+        dbKava[i].rating = avg(a);
+
+        if(dbKava[i].rating > 4){
+          dbKava[i].isTrending = true;
+        } else{
+          dbKava[i].isTrending = false;
+        }
+      }
+
       var obj = {
         kavas: dbKava,
         isMainPage: true
       };
+
       res.render('index',obj);
     });
   });
@@ -48,6 +73,12 @@ module.exports = function(app) {
         }
       };
 
+      if(obj.kava.rating > 4){
+        obj.kava.isTrending = true;
+      } else{
+        obj.kava.isTrending = false;
+      }
+
       res.render('kava', obj);
     });
   });
@@ -57,7 +88,11 @@ module.exports = function(app) {
       where: {
         username: req.params.username
       },
-      include: [db.reviews]
+      include: {
+        model: db.reviews,
+        all: true,
+        nested: true
+      }
     }).then(function(dbUser) {
 
       var obj = {

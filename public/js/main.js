@@ -5,33 +5,67 @@ $(document).ready(function() {
 
 
   // populate kava object
-  var kavaList = [];
+  var kavaList = {};
   $.ajax({
     method: "GET",
     url: "/api/kava/"
   })
   .then(function(results) {
+
+    // var avg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+    // var ratingArr = [];
+
+    // for (var i = 0; i < results.length; i++) {
+    //   var a = [];
+    //   results[i].reviews.forEach(function(obj){
+    //     a.push(obj.rating);
+    //   });
+    //   results[i].rating = avg(a);
+
+    //   if(results[i].rating > 4){
+    //     results[i].isTrending = true;
+    //   } else{
+    //     results[i].isTrending = false;
+    //   }
+    // }
+
+
+
     console.log(results);
+
+
+
     for (var i = 0; i < results.length; i++) {
-      var kava = {
-        id: results[i].id,
-        name: results[i].name
-      };
-      kavaList.push(kava);
+        kavaList[results[i].name] = null;
     }
   });
+
+  console.log(kavaList);
 
   $(document).on('click','.sign-up-link',function(){
     $('.content-login').addClass('hide');
     $('.content-register').removeClass('hide');
-    $('.login-register-toggle').html('Already registered? <a class="login-link">Login Here!</a>')
+    $('.login-register-toggle').html('Already registered? <a class="login-link">Login Here!</a>');
   });
 
   $(document).on('click','.login-link',function(){
     $('.content-register').addClass('hide');
     $('.content-login').removeClass('hide');
-    $('.login-register-toggle').html('Not registered? <a class="sign-up-link">Sign up today!</a>')
+    $('.login-register-toggle').html('Not registered? <a class="sign-up-link">Sign up today!</a>');
   });
+
+
+  $(document).on('click','.view-all-kavas',function(){
+    $('.trending-kavas-wrap').addClass('hide');
+    $('.all-kavas-wrap').removeClass('hide');
+  });
+
+  $(document).on('click','.view-trending-kavas',function(){
+    $('.all-kavas-wrap').addClass('hide');
+    $('.trending-kavas-wrap').removeClass('hide');
+  });
+
+
 
   $('.trending-kavas').on('click','a',function(e){
     $('#kavaModal .modal-content').empty();
@@ -56,6 +90,10 @@ $(document).ready(function() {
     });
 
   });
+
+  $('#searchKava.autocomplete').autocomplete({
+    data: kavaList
+  })
 
 
 

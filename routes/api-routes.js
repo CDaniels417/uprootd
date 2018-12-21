@@ -14,8 +14,33 @@ module.exports = function(app) {
   // GET route for getting all of the posts
   app.get("/api/kava/", function(req, res) {
     console.log("this route is working");
-    db.kavas.findAll({})
+    db.kavas.findAll({
+      include: [{
+        model: db.reviews,
+        nested: true
+      }]
+    })
       .then(function(dbKava) {
+
+        // var avg = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+        // var ratingArr = [];
+
+
+        // for (var i = 0; i < dbKava.length; i++) {
+        //   var a = [];
+        //   dbKava[i].reviews.forEach(function(obj){
+        //     a.push(obj.rating);
+        //   });
+        //   dbKava[i].rating = avg(a);
+
+        //   if(dbKava[i].rating > 4){
+        //     dbKava[i].isTrending = true;
+        //   } else{
+        //     dbKava[i].isTrending = false;
+        //   }
+        // }
+
+
         res.json(dbKava);
       });
   });
@@ -37,7 +62,11 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [db.reviews]
+      include: {
+        model: db.reviews,
+        nested: true,
+        all: true
+      }
     }).then(function(dbUser) {
       res.json(dbUser);
     });
