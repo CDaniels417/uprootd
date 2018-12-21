@@ -67,7 +67,7 @@ $(document).ready(function() {
 
 
 
-  $('.trending-kavas').on('click','a',function(e){
+  $('.trending-kavas,.all-kavas').on('click','a',function(e){
     $('#kavaModal .modal-content').empty();
     var id = $(this).data('kava');
 
@@ -80,7 +80,31 @@ $(document).ready(function() {
         ratingArr.push(data.reviews[i].rating);
       };
 
-      var html = '<div class="card small brown lighten-3"><div class="card-image"><img src="https://lorempixel.com/500/500" alt=""></div><div class="card-stacked"><div class="card-content"><span class="card-title">'+data.name+'</span><p>'+data.country+'</p><p>'+data.description+'</p><p>Average Rating: '+avg(ratingArr)+'</p></div></div></div>';
+      data.rating = avg(ratingArr);
+
+      var numStars = Math.round(data.rating);
+      console.log(numStars);
+
+
+      var html = '<div class="card small brown lighten-3"><div class="card-image"><img src="/img/flag_'+data.country.toLowerCase()+'.png" alt=""></div><div class="card-stacked"><div class="card-content"><span class="card-title">'+data.name+'</span><p>'+data.country+'</p><p>'+data.description+'</p>';
+
+      if(data.rating){
+        html+= '<p class="rating-row"><span class="cover"></span><span class="rating">';
+        
+        for (var i = 5; i > 0; i--) {
+          if(numStars === i){
+            html+='<input type="radio" name="ratingstar" id="star'+i+'" value="'+i+'" checked disabled><label for="star'+i+'"><i class="material-icons z">star</i></label>';  
+          } else{
+            html+='<input type="radio" name="ratingstar" id="star'+i+'" value="'+i+'" disabled><label for="star'+i+'"><i class="material-icons z">star</i></label>';  
+          }
+        }
+
+        html+='</span></p>';
+      } else{
+        html+= '<p class="rating-row"><em>Oops! This root hasn\'t been rated yet!</em></p>'
+      }
+
+      html+= '</div></div></div>';
       
       $(html).appendTo('#kavaModal .modal-content');
 
@@ -91,9 +115,34 @@ $(document).ready(function() {
 
   });
 
+
+
+  $('.search-btn').on('click',function(){
+    // if($(this).hasClass('active')){
+    //   $(this).removeClass('active');
+    //   $('.search-icon').removeClass('active');
+    //   $('.search-kava-input').removeClass('active');
+    // } else{
+      $(this).addClass('active');
+      $('.search-icon').addClass('active');
+      $('.search-kava').addClass('active');
+      $('.search-kava-input').addClass('active');
+    // }
+  });
+  
+  $(document).on('click', function (event) {
+    if (!$(event.target).closest('.search-btn.active').length) {
+      // ... clicked on the 'body', but not inside of .search-btn.active
+      $('.search-btn').removeClass('active');
+      $('.search-icon').removeClass('active');
+      $('.search-kava-input').removeClass('active');
+      $('.search-kava-input').val("");
+    }
+  });
+
   $('#searchKava.autocomplete').autocomplete({
     data: kavaList
-  })
+  });
 
 
 

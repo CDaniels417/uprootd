@@ -42,7 +42,10 @@ module.exports = function(app) {
 
       var obj = {
         kavas: dbKava,
-        isMainPage: true
+        isMainPage: true,
+        helpers:{
+          toLowerCase: function(str){return str.toLowerCase();}
+        }
       };
 
       res.render('index',obj);
@@ -100,6 +103,25 @@ module.exports = function(app) {
           name: dbUser.name,
           location: dbUser.location,
           reviews: dbUser.reviews
+        },
+        helpers:{
+          concat: function(str){
+            return str.replace(/ /g,'');
+          },
+          times: function(n, block) {
+            var accum = '';
+            for(var i = n; i >= 1; --i){
+              accum += block.fn(i);
+            }
+            return accum;
+          },
+          if_eq: function(a, b, opts) {
+            if (a == b) {
+              return opts.fn(this);
+            } else {
+              return opts.inverse(this);
+            }
+          }
         }
       };
 
