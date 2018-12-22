@@ -21,6 +21,8 @@ CREATE TABLE users(
     name VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     location VARCHAR(255) NOT NULL,
+    last_login DATETIME,
+    status ENUM('active', 'inactive') DEFAULT 'active',
     createdAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     updatedAt DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     PRIMARY KEY (id)

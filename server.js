@@ -6,6 +6,11 @@
 // =============================================================
 var express = require("express");
 var exphbs = require('express-handlebars');
+var passport = require('passport');
+var session = require('express-session');
+var bodyParser = require('body-parser');
+var env = require('dotenv').load();
+
 
 // Sets up the Express App
 // =============================================================
@@ -18,6 +23,12 @@ var db = require("./models");
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+// passport
+app.use(session({secret: 'peace love music always', resave: true, saveUninitialized: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+require('./config/passport/passport.js')(passport, db.users);
 
 // handlebars
 app.engine('handlebars', exphbs({defaultLayout:'main'}));

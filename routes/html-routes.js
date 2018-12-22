@@ -6,7 +6,7 @@
 // =============================================================
 var path = require("path");
 var db = require('../models');
-
+var passport = require('passport');
 // Routes
 // =============================================================
 module.exports = function(app) {
@@ -45,6 +45,13 @@ module.exports = function(app) {
         isMainPage: true,
         helpers:{
           toLowerCase: function(str){return str.toLowerCase();}
+        },
+        currentUser: function(){
+          if(req.user){
+            return req.user.username;
+          } else{
+            return false;
+          }
         }
       };
 
@@ -132,5 +139,10 @@ module.exports = function(app) {
   app.get('/login', function(req, res){
     res.render('login',{});
   });
+
+  app.post('/signup',passport.authenticate('local-signup',{
+    successRedirect: '/?success=true',
+    failureRedirect: '/?success=false'
+  }));
 
 };

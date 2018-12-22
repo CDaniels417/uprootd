@@ -1,8 +1,17 @@
 <div class="row orange accent-2 page-header z-depth-1">
   <div class="col s12">
     <a href="#" class="right tooltipped" data-html="true" data-position="left" data-tooltip="Welcome to UpRootd! Search below for your favorite kava root, and see its rating. Sign up and login to add your own rating. Happy drinking 😄 BULA!"><i class="material-icons black-text">help</i></a>
-
+    
     <a data-target="loginModal" class="right modal-trigger"><i class="material-icons black-text">person</i></a>
+    {{!-- <a class="expand-user-menu"><i class="material-icons black-text">person</i></a> --}}
+    
+    {{!-- <div class="user-menu-wrap">
+      <div class="user-menu">
+        <ul>
+          <li><a data-target="loginModal" class="right modal-trigger">>Login</a></li>
+        </ul>
+      </div>
+    </div> --}}
 
     <h1 class="center-align"><a href="/" class="black-text">UpRootd</a></h1>
     {{#if isMainPage}}
@@ -18,13 +27,21 @@
   </div>
 </div>
 
+<div id="kavaSearchModal" class="modal">
+  <div class="modal-content">
+  </div>    
+  <div class="modal-footer">
+    <button class="btn modal-close red">Close<i class="material-icons right">close</i></button>
+  </div>
+</div>
+
 
 <div id="loginModal" class="modal brown lighten-4">
   <div class="modal-content content-login show">
     <div class="row">
       <div class="col s12">
         <h4 class="center-align">Login</h4>
-        <form action="">  
+        <form action="/login" method="post">  
           <div class="row">
             <div class="input-field col s6">
               <label for="login_username">Username</label>
@@ -49,7 +66,7 @@
     <div class="row">
       <div class="col s12">
         <h4 class="center-align">Register</h4>
-        <form action="">
+        <form action="signup" method="post">
           <div class="row">
             <div class="input-field col s6">
               <label for="name">Full Name</label>

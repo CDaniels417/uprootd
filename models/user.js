@@ -27,6 +27,13 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
           len: [1]
         }
+      },
+      last_login: {
+        type: DataTypes.DATE
+      },
+      status: {
+        type: DataTypes.ENUM('active', 'inactive'),
+        defaultValue: 'active'
       }
     });
 

@@ -91,11 +91,11 @@ span.cover {
 .search-icon.active {
   text-align: left;
   display: inline-block;
-  width: 18%;
+  width: 7%;
 }
 
 .search-kava.input-field.active {
-  /* display: inline-block; */
+  width: 80%;
   margin-top: .5rem;
   margin-bottom: .5rem;
 }

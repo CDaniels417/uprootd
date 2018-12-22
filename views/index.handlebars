@@ -1,5 +1,8 @@
 <div class="row">
   <div class="col s12">
+    {{#if currentUser}}
+    <h6>Welcome {{currentUser}}!</h6>
+    {{/if}}
     <div class="trending-kavas-wrap">
       <h3 class="header">Trending Kavas</h3>
       <div class="trending-kavas">
