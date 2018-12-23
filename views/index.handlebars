@@ -35,19 +35,19 @@
 
         {{#each kavas}}
           <div class="card horizontal brown lighten-3 hoverable">
-            <div class="card-image valign-wrapper">
-              <img src="/img/flag_{{country}}.png" alt="">
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <span class="card-title">{{name}}</span>
-                <p>{{country}}</p>
+              <div class="card-image valign-wrapper">
+                <img src="/img/flag_{{toLowerCase country}}.png" alt="">
               </div>
-              <div class="card-action">
-                <a data-kava="{{id}}" class="black-text">More Info</a>
+              <div class="card-stacked">
+                <div class="card-content">
+                  <span class="card-title">{{name}}</span>
+                  <p>{{country}}</p>
+                </div>
+                <div class="card-action">
+                  <a data-kava="{{id}}" class="black-text">More Info</a>
+                </div>
               </div>
             </div>
-          </div>
         {{/each}}
       </div>
       <a class="view-trending-kavas btn orange accent-2 right">View Trending Kava <i class="material-icons right">chevron_right</i></a>

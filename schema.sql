@@ -1,9 +1,9 @@
 -- Drops the blogger if it exists currently --
-DROP DATABASE IF EXISTS uprootd;
+-- DROP DATABASE IF EXISTS uprootd;
 -- Creates the "blogger" database --
-CREATE DATABASE uprootd;
+-- CREATE DATABASE uprootd;
 
-USE uprootd;
+-- USE uprootd;
 
 CREATE TABLE kavas(
     id INT AUTO_INCREMENT NOT NULL,
