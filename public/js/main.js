@@ -45,13 +45,17 @@ $(document).ready(function() {
 
   $(document).on('click','.sign-up-link',function(){
     $('.content-login').addClass('hide');
+    // $('.show-on-login').addClass('hide');
     $('.content-register').removeClass('hide');
+    // $('.show-on-register').removeClass('hide');
     $('.login-register-toggle').html('Already registered? <a class="login-link">Login Here!</a>');
   });
 
   $(document).on('click','.login-link',function(){
     $('.content-register').addClass('hide');
+    // $('.show-on-register').addClass('hide');
     $('.content-login').removeClass('hide');
+    // $('.show-on-login').removeClass('hide');
     $('.login-register-toggle').html('Not registered? <a class="sign-up-link">Sign up today!</a>');
   });
 

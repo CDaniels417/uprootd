@@ -25,6 +25,10 @@ h1,h2,h3,h4,h5,h6, [class*=title]{
   padding: 8px 24px;
 }
 
+.modal{
+  max-height: 100%;
+}
+
 .modal-trigger, .login-register-toggle a{
   cursor: pointer;
 }
