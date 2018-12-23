@@ -17,8 +17,8 @@
   },
   "production": {
     "username": "i0bgaefehn1e4bg2",
-    "password": "tykirzpii5vbq5r5",
-    "database": "tykirzpii5vbq5r5",
+    "password": "uzkqdv2vnymlk3ad",
+    "database": "humlkw73vgx9q84j",
     "host": "etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "port": 3306,
     "dialect": "mysql"
